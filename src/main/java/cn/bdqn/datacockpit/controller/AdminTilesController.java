@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -235,16 +234,17 @@ public class AdminTilesController {
     // return "admin_cominfo.page";
     // }
 
-    @RequestMapping("/admin_shuju1")
-    public String shuju1(Model model, HttpServletRequest req) throws Exception {
-        model.addAttribute("menus", "3");
-        String id = req.getParameter("id");
-        HttpSession session = req.getSession();
-        session.setAttribute("No1", id);
-        List<Map<String, Object>> lists = releTable.selectAllTables();
-        model.addAttribute("lists", lists);
-        return "admin_shuju1.page";
-    }
+    // @RequestMapping("/admin_shuju1")
+    // public String shuju1(Model model, HttpServletRequest req) throws
+    // Exception {
+    // model.addAttribute("menus", "3");
+    // String id = req.getParameter("id");
+    // HttpSession session = req.getSession();
+    // session.setAttribute("No1", id);
+    // List<Map<String, Object>> lists = releTable.selectAllTables();
+    // model.addAttribute("lists", lists);
+    // return "admin_shuju1.page";
+    // }
 
     // @RequestMapping("/admin_shuju2") // 任务中的项目列表-----------------没实现的
     // public String shuju2(Model model, HttpServletRequest req) {

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -225,37 +226,36 @@ public class UserTilesController {
         return null;
     }
 
+    @SuppressWarnings("resource")
     @ResponseBody
     @RequestMapping("/user_uploadss")
     public Map<String, String> uploads(Model model, HttpServletRequest req) throws Exception {
         String urls = req.getParameter("urls");
-        String tb1 = urls.substring(12);
+        String tb1 = urls.substring(3);// 文件名****.xlsx
         String[] tb2 = tb1.split("\\.");
-        String tbNames = tb2[0];
-        ChineseToPinYin ctp = new ChineseToPinYin();
-        String tableName = ctp.getPingYin(tbNames);
-        ImportExecl poi = new ImportExecl();
-        List<List<String>> list = poi.read(urls);
-        List<String> head = list.get(0);
-        List<String> heads = new ArrayList<String>();
-        for (int i = 0; i < head.size(); i++) {
+        String tbNames = tb2[0];// 文件****
+        String tableName = ChineseToPinYin.getPingYin(tbNames);// 转为拼音
+        ImportExecl poi = new ImportExecl();// 创建了工具类
+        List<List<String>> list = poi.read(urls);// 读取指定路径下的Excel文件
+        List<String> head = list.get(0);// 获取Excel表头的信息
+        List<String> heads = new ArrayList<String>();// 定义一个集合存
+        for (int i = 0; i < head.size(); i++) {// 判断日期
             if (head.get(i).equals("日期")) {
                 heads.add("times");
             } else {
-                heads.add(ctp.getPingYin(head.get(i)));
+                heads.add(ChineseToPinYin.getPingYin(head.get(i)));
             }
         }
-
         List<Map<String, Object>> contents = new ArrayList<Map<String, Object>>();
-        for (int j = 1; j < list.size(); j++) {
-            List<String> content = list.get(j);
+        for (int j = 1; j < list.size(); j++) {// 循环表头
+            List<String> content = list.get(j);// 把表头装进集合(除开主键)
             Map<String, Object> maps = new HashMap<String, Object>();
             for (int k = 0; k < content.size(); k++) {
-                if (heads.get(k).equals("times")) {
+                if (heads.get(k).equals("times")) {// 装换日期格式
                     String date1 = content.get(k);
                     StringBuilder sb = new StringBuilder(date1);
-                    sb.insert(4, "-");
-                    sb.insert(7, "-");
+                    // sb.insert(4, "-");
+                    // sb.insert(7, "-");
                     String dates = sb.toString();
                     maps.put(heads.get(k), dates);
                 } else if (content.get(k).matches("[0-9]+")) {
@@ -268,13 +268,22 @@ public class UserTilesController {
             }
             contents.add(maps);
         }
-        JdbcUtil jdbcs = new JdbcUtil();
-        ApplicationContext context = jdbcs.getContext();
+        /* 循环List<Map> */
+        ListIterator<Map<String, Object>> it = contents.listIterator();
+        for (Map<String, Object> map : contents) {
+            map.remove("id");
+            map.remove("bianhao");
+            map.remove("xuhao");
+        }
+
+        ApplicationContext context = JdbcUtil.getContext();
         context = new ClassPathXmlApplicationContext("spring-common.xml");
         JdbcTemplate jt = (JdbcTemplate) context.getBean("jdbcTemplate");
-        jdbcs.saveObj(jt, tableName, contents);
+        int flag = JdbcUtil.saveObj(jt, tableName, contents);// 动态插入
         Map<String, String> maps = new HashMap<String, String>();
-        maps.put("flag", "1");
+        if (flag >= 1) {
+            maps.put("flag", "1");
+        }
         return maps;
     }
 
