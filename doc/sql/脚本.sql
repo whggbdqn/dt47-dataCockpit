@@ -293,6 +293,68 @@ insert  into `weidulie`(`id`,`lie_name`) values
 (4,'到访人数'),
 (5,'认筹人数');
 
+/*Table structure for table `xiaoshoushujubiao` */
+
+DROP TABLE IF EXISTS `xiaoshoushujubiao`;
+
+CREATE TABLE `xiaoshoushujubiao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `xiangmumingcheng` varchar(50) DEFAULT NULL,
+  `suozaiquyu` varchar(40) DEFAULT NULL,
+  `times` date DEFAULT NULL,
+  `daofangrenshu` int(10) DEFAULT NULL,
+  `renchourenshu` int(10) DEFAULT NULL,
+  `shows` int(2) DEFAULT NULL,
+  `tbName` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+
+/*Data for the table `xiaoshoushujubiao` */
+
+insert  into `xiaoshoushujubiao`(`id`,`xiangmumingcheng`,`suozaiquyu`,`times`,`daofangrenshu`,`renchourenshu`,`shows`,`tbName`) values 
+(1,'a','b','2018-01-01',10,2,1,NULL),
+(2,'aa','bb','2018-01-02',120,20,0,NULL),
+(3,'a','bb','2018-01-01',10,1,1,'xiaoshoushujubiao'),
+(4,'a','bb','2018-01-01',10,1,1,'xiaoshoushujubiao'),
+(5,'a','bb','2018-01-01',10,1,1,'xiaoshoushujubiao'),
+(6,'a','bb','2018-01-02',10,1,1,'xiaoshoushujubiao'),
+(7,'a','bb','2018-01-03',10,1,1,'xiaoshoushujubiao'),
+(8,'a','bb','2018-01-04',10,1,1,'xiaoshoushujubiao'),
+(9,'a','bb','2018-01-05',10,1,1,'xiaoshoushujubiao'),
+(10,'a','bb','2018-01-06',10,1,1,'xiaoshoushujubiao'),
+(11,'a','bb','2018-01-07',10,1,1,'xiaoshoushujubiao'),
+(12,'a','bb','2018-01-08',10,1,1,'xiaoshoushujubiao'),
+(13,'a','bb','2018-01-01',10,1,1,'xiaoshoushujubiao'),
+(14,'a','bb','2018-01-01',10,1,1,'xiaoshoushujubiao'),
+(15,'a','bb','2018-01-01',10,1,1,'xiaoshoushujubiao'),
+(16,'a','bb','2018-01-02',10,1,1,'xiaoshoushujubiao'),
+(17,'a','bb','2018-01-03',10,1,1,'xiaoshoushujubiao'),
+(18,'a','bb','2018-01-04',10,1,1,'xiaoshoushujubiao'),
+(19,'a','bb','2018-01-05',10,1,1,'xiaoshoushujubiao'),
+(20,'a','bb','2018-01-06',10,1,1,'xiaoshoushujubiao'),
+(21,'a','bb','2018-01-07',10,1,1,'xiaoshoushujubiao'),
+(22,'a','bb','2018-01-08',10,1,1,'xiaoshoushujubiao'),
+(23,'a','bb','2018-01-01',10,1,NULL,'xiaoshoushujubiao'),
+(24,'a','bb','2018-01-01',10,1,NULL,'xiaoshoushujubiao'),
+(25,'a','bb','2018-01-01',10,1,NULL,'xiaoshoushujubiao'),
+(26,'a','bb','2018-01-02',10,1,NULL,'xiaoshoushujubiao'),
+(27,'a','bb','2018-01-03',10,1,NULL,'xiaoshoushujubiao'),
+(28,'a','bb','2018-01-04',10,1,NULL,'xiaoshoushujubiao'),
+(29,'a','bb','2018-01-05',10,1,NULL,'xiaoshoushujubiao'),
+(30,'a','bb','2018-01-06',10,1,NULL,'xiaoshoushujubiao'),
+(31,'a','bb','2018-01-07',10,1,NULL,'xiaoshoushujubiao'),
+(32,'a','bb','2018-01-08',10,1,NULL,'xiaoshoushujubiao'),
+(33,'a','bb','2018-01-01',10,1,NULL,'xiaoshoushujubiao'),
+(34,'a','bb','2018-01-01',10,1,NULL,'xiaoshoushujubiao'),
+(35,'a','bb','2018-01-01',10,1,NULL,'xiaoshoushujubiao'),
+(36,'a','bb','2018-01-02',10,1,NULL,'xiaoshoushujubiao'),
+(37,'a','bb','2018-01-03',10,1,NULL,'xiaoshoushujubiao'),
+(38,'a','bb','2018-01-04',10,1,NULL,'xiaoshoushujubiao'),
+(39,'a','bb','2018-01-05',10,1,NULL,'xiaoshoushujubiao'),
+(40,'a','bb','2018-01-06',10,1,NULL,'xiaoshoushujubiao'),
+(41,'a','bb','2018-01-07',10,1,NULL,'xiaoshoushujubiao'),
+(42,'a','bb','2018-01-08',10,1,NULL,'xiaoshoushujubiao');
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
