@@ -45,6 +45,14 @@ public class JsonController {
     @Autowired
     private CompanyinfoService cfs;
 
+    /**
+     * 
+     * Description: <br/>
+     *
+     * @author heming
+     * @param searchCondition:使用datatable获取companyInfo信息
+     * @return
+     */
     @RequestMapping(value = "dt_list")
     public DatatableResult<Userinfo> datatable(@IsSearchCondition SearchCondition searchCondition) {
         DatatableResult<Userinfo> list = new DatatableResult<>();
@@ -52,6 +60,14 @@ public class JsonController {
         return list;
     }
 
+    /**
+     * 
+     * Description: <br/>
+     *
+     * @author heming
+     * @param searchCondition:使用datatable获取companyInfo信息
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "dt_list2")
     public DatatableResult<Userinfo> datatable2(@RequestBody SearchCondition searchCondition) {
@@ -61,6 +77,14 @@ public class JsonController {
         return list;
     }
 
+    /**
+     * 
+     * Description: <br/>
+     *
+     * @author heming
+     * @param searchCondition:使用datatable获取companyInfo信息
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "dt_lists3")
     public DatatableResult<Info> datatable23(@RequestBody SearchCondition searchCondition) {

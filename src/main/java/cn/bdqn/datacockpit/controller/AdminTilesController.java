@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -206,7 +205,7 @@ public class AdminTilesController {
         return "admin_userMan.page";
     }
 
- 
+
     @RequestMapping("/admin_shujus")
     public String shuju3(Model model, HttpServletRequest req) {
         model.addAttribute("menus", "3");
