@@ -79,7 +79,7 @@ public class AdminTilesController2 {
 
     /**
      * 
-     * Description: 主页中点击添加通知跳转添加页面<br/>
+     * Description: 主页点击添加通知跳转添加页面<br/>
      *
      * @author dengJ
      * @param model
