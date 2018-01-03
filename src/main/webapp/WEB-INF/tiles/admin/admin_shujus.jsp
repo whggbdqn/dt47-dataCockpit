@@ -24,18 +24,19 @@
             </div>
             <div id="uploads" style="margin-left: 180px;margin-top: -35px"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" data-whatever="@jason" style="width: 100px;height: 30px;font-size: 14px;line-height: 0px">上传新数据</button></div>
 
-            <div style="margin-left: 300px;margin-top: -29.7px"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" data-whatever="@jason" style="width: 100px;height: 30px;font-size: 14px;line-height: 0px">导出数据</button></div>
+            <div style="margin-left: 300px;margin-top: -29.7px"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" data-whatever="@jason" style="width: 100px;height: 30px;font-size: 14px;line-height: 0px" onclick="daochu()">导出数据</button></div>
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>编号</th>
-                  <th>项目名称</th>
-                  <th>所在区域</th>
-                  <th>日期</th>
-                  <th class="people_num">到访人数</th>
-                  <th class="people_num">认筹人数</th>
-                  <th>退订人数</th>
+                  <th id="id">编号</th>
+                  <th id="xmmc">项目名称</th>
+                  <th id="szqy">所在区域</th>
+                  <th id="rq">日期</th>
+                  <!-- <th>日期结束</th> -->
+                  <th id="dfrs" class="people_num">到访人数</th>
+                  <th id="rcrs" class="people_num">认筹人数</th>
+                  <th id="tdrs">退订人数</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -183,11 +184,19 @@
        				window.location.href="./admin_shujus.shtml?id=${name2}"
        			}
        		}
-       			
-       		 
 		})
-		 
 	})
+	
+	function daochu(){
+		var id = $("#id").html();
+		var xmmc = $("#xmmc").html();
+		var szqy = $("#szqy").html();
+		var rq = $("#rq").html();
+		var dfrs = $("#dfrs").html();
+		var rcrs = $("#rcrs").html();
+		var tdrs = $("#tdrs").html();
+		window.location.href="./user_export.shtml?id="+id+"&xmmc="+xmmc+"&szqy="+szqy+"&rq="+rq+"&dfrs="+dfrs+"&rcrs="+rcrs+"&tdrs="+tdrs+""
+	}
 </script>
 
 

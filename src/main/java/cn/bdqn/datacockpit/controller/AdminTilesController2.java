@@ -333,24 +333,28 @@ public class AdminTilesController2 {
     // return null;
     // }
 
-    // @RequestMapping("/admin_shujus")//后台用户点击查看数据,查看企业表数据
+    @SuppressWarnings("resource")
+    @RequestMapping("/admin_shujus") // 后台用户点击查看数据,查看企业指定表数据
     public String shuju3(Model model, HttpServletRequest req) {
         model.addAttribute("menus", "3");
-        String names = req.getParameter("id");
-        String name = ChineseToPinYin.getPingYin(names);
-        model.addAttribute("name2", names);
-        model.addAttribute("name1", name);
+        String names = req.getParameter("id");// 获取前段传来的表名(如销售数据表)
+        String name = ChineseToPinYin.getPingYin(names);// 转为拼音
+        model.addAttribute("name2", names);// 存是中文表名
+        model.addAttribute("name1", name);// 存的拼音表名
+        req.getSession().setAttribute("table_name", names);
         ApplicationContext context = JdbcUtil.getContext();
         context = new ClassPathXmlApplicationContext("spring-common.xml");
         JdbcTemplate jt = (JdbcTemplate) context.getBean("jdbcTemplate");
-        List<Map<String, Object>> lists = JdbcUtil.selectObj(jt, name);
+        List<Map<String, Object>> lists = JdbcUtil.selectObj(jt, name);// 查询这张表的信息select
+                                                                       // * from
+                                                                       // biaoming
         if (lists != null) {
             try {
                 int shows = (int) lists.get(0).get("shows");
-                model.addAttribute("shows", shows);
+                model.addAttribute("shows", shows);// 显示方式
                 String time = "'";
                 Date date = null;
-                for (int i = 0; i < lists.size(); i++) {
+                for (int i = 0; i < lists.size(); i++) {// 获取时间进行格式化
                     date = (Date) lists.get(i).get("times");
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     time = time + sdf.format(date) + "','";
@@ -360,10 +364,10 @@ public class AdminTilesController2 {
                         time = time + sdf2.format(date);
                     }
                 }
-                time = "[" + time + "']";
-                model.addAttribute("lists", time);
-                String fNums = "";
-                for (int i = 0; i < lists.size(); i++) {
+                time = "[" + time + "']";// 新的时间格式
+                model.addAttribute("lists", time);// 将时间存进域
+                String fNums = "";// 到访人数
+                for (int i = 0; i < lists.size(); i++) {// 获取到访人数
                     if (i == lists.size() - 1) {
                         fNums = fNums + lists.get(i).get("daofangrenshu");
                     } else {
@@ -372,9 +376,8 @@ public class AdminTilesController2 {
                 }
                 fNums = "[" + fNums + "]";
 
-                String rNums = "";
-                for (int i = 0; i < lists.size(); i++) {
-
+                String rNums = "";// 认筹人数
+                for (int i = 0; i < lists.size(); i++) {// 获取认筹人数
                     if (i == lists.size() - 1) {
                         rNums = rNums + lists.get(i).get("renchourenshu");
                     } else {
@@ -382,10 +385,10 @@ public class AdminTilesController2 {
                     }
                 }
                 rNums = "[" + rNums + "]";
-                model.addAttribute("rNums", rNums);
-                model.addAttribute("fNums", fNums);
+                model.addAttribute("rNums", rNums);// 存认筹人数
+                model.addAttribute("fNums", fNums);// 存到访人数
                 Set<String> sets = new HashSet<String>();
-
+                /* 获取表头信息 */
                 for (int i = 0; i < lists.size(); i++) {
                     sets = lists.get(i).keySet();
                 }
