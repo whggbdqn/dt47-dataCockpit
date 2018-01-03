@@ -205,8 +205,6 @@ public class AdminTilesController {
         return "admin_userMan.page";
     }
 
-
-    @RequestMapping("/admin_shujus")
     public String shuju3(Model model, HttpServletRequest req) {
         model.addAttribute("menus", "3");
         String names = req.getParameter("id");

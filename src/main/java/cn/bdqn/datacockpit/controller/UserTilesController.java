@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import cn.bdqn.datacockpit.service.CompanyinfoService;
 import cn.bdqn.datacockpit.service.InfoService;
 import cn.bdqn.datacockpit.service.XsTableService;
 import cn.bdqn.datacockpit.utils.ChineseToPinYin;
+import cn.bdqn.datacockpit.utils.ExcelHelper;
 import cn.bdqn.datacockpit.utils.ImportExecl;
 import cn.bdqn.datacockpit.utils.JdbcUtil;
 
@@ -319,6 +321,52 @@ public class UserTilesController {
             maps.put("flag", "1");
         }
         return maps;
+    }
+
+    @SuppressWarnings("resource")
+    @RequestMapping("user_export") // excel导出
+    public void user_export(HttpSession session, HttpServletRequest req, HttpServletResponse response) {
+        /* 获取表头信息 */
+        String id = req.getParameter("id");
+        String xmmc = req.getParameter("xmmc");
+        String szqy = req.getParameter("szqy");
+        String rq = req.getParameter("rq");
+        String dfrs = req.getParameter("dfrs");
+        String rcrs = req.getParameter("rcrs");
+        String tdrs = req.getParameter("tdrs");
+        /* 封装表头 */
+        List<String> headers = new ArrayList<String>();
+        headers.add(id);// 编号
+        headers.add(xmmc);// 项目名称
+        headers.add(szqy);// 所在区域
+        headers.add(rq);// 日期
+        headers.add(dfrs);// 到访人数
+        headers.add(rcrs);// 认筹人数
+        headers.add(tdrs);// 退订人数
+
+        String tableName = session.getAttribute("table_name").toString();// 获取要导出的表的表名
+        String name = ChineseToPinYin.getPingYin(tableName);// 转为拼音
+        ApplicationContext context = JdbcUtil.getContext();
+        context = new ClassPathXmlApplicationContext("spring-common.xml");
+        JdbcTemplate jt = (JdbcTemplate) context.getBean("jdbcTemplate");
+        List<Map<String, Object>> lists = JdbcUtil.selectObj(jt, name);// 获取所有信息
+        List<Object[]> bodyContent = new ArrayList<Object[]>();
+        for (Map<String, Object> map : lists) {
+            String id0 = map.get("id").toString();
+            String xiangmumingcheng0 = map.get("xiangmumingcheng").toString();
+            String suozaiquyu0 = map.get("suozaiquyu").toString();
+            String times0 = map.get("times").toString();
+            String daofangrenshu0 = map.get("daofangrenshu").toString();
+            String renchourenshu0 = map.get("renchourenshu").toString();
+            String tuidingrenshu0 = map.get("tuidingrenshu").toString();
+            Object[] obj = { id0, xiangmumingcheng0, suozaiquyu0, times0, daofangrenshu0, renchourenshu0,
+                    tuidingrenshu0, };
+            bodyContent.add(obj);
+        }
+
+        /* 导出Excel */
+        ExcelHelper.exportExcel(headers, bodyContent, tableName, response);// 表头名，内容，文件名，响应
+
     }
 
 }
