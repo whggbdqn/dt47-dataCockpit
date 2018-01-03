@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.bdqn.datacockpit.entity.Info;
+import cn.bdqn.datacockpit.service.CompanyinfoService;
 import cn.bdqn.datacockpit.service.InfoService;
 import cn.bdqn.datacockpit.service.XsTableService;
 import cn.bdqn.datacockpit.utils.ChineseToPinYin;
@@ -42,10 +43,39 @@ public class UserTilesController {
     @Autowired
     private InfoService infoService;
 
+    @Autowired
+    private CompanyinfoService companyinfoService;
+
+    /**
+     * 
+     * Description: <br/>
+     * 转发跳转到修改密码模块
+     * 
+     * @author rongLei
+     * @param model
+     * @return
+     */
     @RequestMapping("/user_pass")
     public String pass(Model model) {
         model.addAttribute("checks", "geren2");
         return "user_pass.pages";
+    }
+
+    /**
+     * 验证之前密码是否正确 Description: <br/>
+     *
+     * @author rongLei
+     * @param model
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/password")
+    public boolean password(String password, HttpSession session) {
+        String phone = (String) session.getAttribute("phone");
+        System.out.println(phone);
+        boolean flag = companyinfoService.selectpassword(password);
+        System.out.println(flag);
+        return flag;
     }
 
     @RequestMapping("/user_update")

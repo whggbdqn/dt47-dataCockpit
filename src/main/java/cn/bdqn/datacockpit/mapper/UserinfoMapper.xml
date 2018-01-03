@@ -10,10 +10,13 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="INTEGER" />
   </resultMap>
-  <!-- shiro专用方法 -->
-  <select id="getByPhone" parameterType="String" resultMap="BaseResultMap">
-		SELECT * FROM userinfo WHERE phone=#{phone}
+  
+  
+    <!-- shiro专用方法 -->
+    <select id="getByPhone" parameterType="String" resultMap="BaseResultMap">
+		SELECT * FROM companyinfo WHERE  phone=#{phone}
 	</select>
+	
 	
 	<select id="getRoles" parameterType="String" resultMap="BaseResultMap">
 		SELECT r.role_name FROM userinfo u INNER JOIN user_role ur ON u.id=ur.uid INNER JOIN role r ON ur.rid=r.id WHERE u.phone=#{phone}

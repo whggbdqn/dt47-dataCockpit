@@ -188,7 +188,7 @@ public class AdminTilesController2 {
      * @param req:通过id更新approval状态
      * @return
      */
-    // @RequestMapping("/adminuss_updatee0")
+    @RequestMapping("/adminuss_updatee0")
     public String adminuss_updatee0(HttpServletRequest req) {
         // 获取实体类信息
         Integer id = Integer.parseInt(req.getParameter("id"));
@@ -290,7 +290,7 @@ public class AdminTilesController2 {
         return "admin_index.page";
     }
 
-    @RequestMapping("/admin_userDsh") // 点击待审核用户
+    @RequestMapping("/admin_userDsh") // 点击待审核用户,查询返回数据
     public String dshCompanyinfo(Model model) {
         List<Companyinfo> lists = companyinfo.selectAllCompanies();
         model.addAttribute("lists", lists);
@@ -312,14 +312,7 @@ public class AdminTilesController2 {
         return ts.insert(id, session);// -----------创建了一个map集合给json进行响应
     }
 
-    // @RequestMapping("/admin_selects")//这个目前不知道干啥用的
-    // public String selects(Model model) {
-    // List<Companyinfo> lists = companyinfo.selectAllCompanies();
-    // model.addAttribute("menus", "4");
-    // model.addAttribute("lists", lists);
-    // // 转发
-    // return "admin_userMan.page";
-    // }
+   
 
     @RequestMapping("/admin_gongGao") // 公告详情
     public String gongGao1(Integer id, Model model) {
@@ -332,15 +325,7 @@ public class AdminTilesController2 {
         return dataService.insert(record) ? "redirect:/admin_shuju1.shtml?id=1" : "admin_shuju1.page";// 添加成功或添加失败到：企业数据管理页面
     }
 
-    // @RequestMapping("/admin_adds")//目前没用
-    // public String adds(Model model) {
-    // List<Companyinfo> lists = companyinfo.selectAllCompanies();
-    // model.addAttribute("menus", "4");
-    // model.addAttribute("lists", lists);
-    //
-    // // 转发
-    // return null;
-    // }
+    
 
     @SuppressWarnings("resource")
     @RequestMapping("/admin_shujus") // 后台用户点击查看数据,查看企业指定表数据
@@ -415,8 +400,8 @@ public class AdminTilesController2 {
     }
 
     // @RequestMapping("/admin_uppassword")
-    public String admin_uppassword(Model model) {
+    /*public String admin_uppassword(Model model) {
         model.addAttribute("checks", "geren2");
         return "admin_pass.page";
-    }
+    }*/
 }

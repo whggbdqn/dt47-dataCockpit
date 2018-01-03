@@ -17,14 +17,15 @@
 
           <div class="box" style="border-top-color: #DD4B39;">                  
             <div class="box-header" style="width: 180px">
-              <!-- <h3 class="box-title">通知管理</h3> -->              
             </div>
+            
             <div style="margin-left: 5px;margin-top: -5px;"><a href="./admin_tongzhi2.shtml"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" data-whatever="@jason" style="width: 100px;height: 30px;font-size: 14px;line-height: 0px">添加通知</button></a></div>
+           
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th style="text-align: center;">编号</th>
+                  <th style="text-align: center;">编号111</th>
                   <th style="text-align: center;">标题</th>
                   <th style="text-align: center;">操作</th>
                 </tr>
@@ -62,7 +63,11 @@
          <div class="modal-body">
          <center>
             <table border="1px solid black" width="300px" height="100px">
-              <tr><td>编号</td><td>推理</td><td>结论</td></tr>
+              <tr>
+               <td>编号</td>
+               <td>推理</td>
+               <td>结论</td>
+              </tr>
               <tr>
                 <td>12</td>
                 <td>11</td>

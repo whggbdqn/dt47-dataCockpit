@@ -98,7 +98,7 @@ public class JdbcUtil {
     }
 
     /**
-     * 根据表名称创建一张表
+     * 根据表名称创建新的一张表
      * 
      * @param tableName
      */

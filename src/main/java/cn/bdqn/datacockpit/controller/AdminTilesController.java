@@ -84,15 +84,6 @@ public class AdminTilesController {
         return "admin_tongzhi2.page";
     }
 
-    // @RequestMapping("/admin_tongzhi3")
-    // public String tongzhi3(Model model, HttpServletRequest req) {
-    // // 获取id
-    // Integer id = Integer.parseInt(req.getParameter("id"));
-    // Info info = is.selectByPrimaryKey(id);
-    // model.addAttribute("info", info);
-    // return "admin_tongzhi3.page";
-    // }
-
     @RequestMapping("/tongzhi_update")
     public String tongzhi_update(Info info) {
         // 获取实体类信息
@@ -174,21 +165,6 @@ public class AdminTilesController {
 
     /***
      * 
-     * @param req:通过id更新approval状态
-     * @return
-     */
-    @RequestMapping("/adminuss_updatee0")
-    public String adminuss_updatee0(HttpServletRequest req) {
-        // 获取实体类信息
-        Integer id = Integer.parseInt(req.getParameter("id"));
-        Companyinfo comp = companyinfo.selectByPrimaryKey(id);
-        comp.setApproval(0);
-        companyinfo.updateByPrimaryKey(comp);
-        return "admin_userDsh.page";
-    }
-
-    /***
-     * 
      * @param req:通过id更新state状态:1
      * @return
      */
@@ -207,7 +183,7 @@ public class AdminTilesController {
      * @param req:通过id更新state状态:0
      * @return
      */
-    @RequestMapping("/aduser_update0")
+    // @RequestMapping("/aduser_update0")
     public String aduser_update0(HttpServletRequest req) {
         // 获取实体类信息
         Integer id = Integer.parseInt(req.getParameter("id"));
@@ -221,185 +197,10 @@ public class AdminTilesController {
     public String aduser_insert(Companyinfo comps) {
         // 获取实体类信息
         int flag = companyinfo.updateByPrimaryKey(comps);
-
         System.out.println(flag);
         return "admin_userMan.page";
     }
 
-    // @RequestMapping("/admin_cominfo")
-    // public String cominfo(Model model) {
-    // List<Companyinfo> lists = companyinfo.selectAllCompanies();
-    // model.addAttribute("menus", "3");
-    // model.addAttribute("lists", lists);
-    // return "admin_cominfo.page";
-    // }
-
-    // @RequestMapping("/admin_shuju1")
-    // public String shuju1(Model model, HttpServletRequest req) throws
-    // Exception {
-    // model.addAttribute("menus", "3");
-    // String id = req.getParameter("id");
-    // HttpSession session = req.getSession();
-    // session.setAttribute("No1", id);
-    // List<Map<String, Object>> lists = releTable.selectAllTables();
-    // model.addAttribute("lists", lists);
-    // return "admin_shuju1.page";
-    // }
-
-    // @RequestMapping("/admin_shuju2") // 任务中的项目列表-----------------没实现的
-    // public String shuju2(Model model, HttpServletRequest req) {
-    // return "admin_shuju2.page";
-    // }
-    //
-    // @RequestMapping("/admin_shuju3") //
-    // 分析任务管理下的---查看任务情况-----------------------没实现的
-    // public String shuju3(Model model) {
-    // return "admin_shuju3.page";
-    // }
-
-    // @RequestMapping("/admin_shuju4")
-    // public String shuju4(Model model) {
-    // model.addAttribute("menus", "2");
-    // return "admin_shuju4.page";
-    // }
-
-    // @RequestMapping("insertAdminReg")
-    // public String insertAdminReg(Userinfo record) {
-    // int flag = us.insertSelective(record);
-    // // 转发
-    // return "admin_shuju4.page";
-    // }
-
-    // @RequestMapping("/selectAllCompanyinfo")
-    // public String selectAllCompanyinfo(Model model, HttpServletRequest req) {
-    // List<Companyinfo> lists = companyinfo.selectAllCompanies();
-    // model.addAttribute("lists", lists);
-    // List<Info> infoList = is.selectAllInfo();
-    // if (infoList != null) {
-    // for (Info info : infoList) {
-    // Date date = info.getPublishDate();
-    // System.out.println(date);
-    // }
-    // }
-    // HttpSession session = req.getSession();
-    // session.setAttribute("tongzhi", infoList);
-    // // 转发
-    // return "admin_index.page";
-    // }
-
-    // @RequestMapping("/admin_userDsh")
-    // public String dshCompanyinfo(Model model) {
-    //
-    // List<Companyinfo> lists = companyinfo.selectAllCompanies();
-    // model.addAttribute("menus", "5");
-    // model.addAttribute("lists", lists);
-    // // 转发
-    // return "admin_userDsh.page";
-    // }
-
-    // @RequestMapping("/admin_userMan")
-    // public String userMan(Model model) {
-    //
-    // List<Companyinfo> lists = companyinfo.selectAllCompanies();
-    // model.addAttribute("menus", "4");
-    // model.addAttribute("lists", lists);
-    //
-    // // 转发
-    // return "admin_userMan.page";
-    // }
-
-    // 新建数据表
-    // @ResponseBody
-    // @RequestMapping("/admin_create")
-    // public Map<String, String> creats(@RequestParam("values") String id,
-    // HttpServletRequest req) {
-    // String[] attr = id.split(",");
-    // ChineseToPinYin ctp = new ChineseToPinYin();
-    // Map<String, Object> map = new HashMap<String, Object>();
-    // String tbName = null;
-    // for (int i = 0; i < attr.length; i++) {
-    // if (i == 0) {
-    // map.put("shows", attr[0]);
-    // } else if (i == 1) {
-    // tbName = ctp.getPingYin(attr[1]);
-    // } else if (2 * i - 1 <= attr.length) {
-    //
-    // map.put(ctp.getPingYin(attr[2 * i - 2]), attr[2 * i - 1]);
-    //
-    // }
-    // }
-    //
-    // JdbcUtil creats = new JdbcUtil();
-    // ApplicationContext context = creats.getContext();
-    // context = new ClassPathXmlApplicationContext("spring-common.xml");
-    // JdbcTemplate jt = (JdbcTemplate) context.getBean("jdbcTemplate");
-    // creats.createTable(jt, tbName, map);
-    //
-    // Date dt = new Date();
-    // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-    // String date = sdf.format(dt);
-    // Tableinfo record = new Tableinfo();
-    // record.setName(attr[1]);
-    // record.setUpdatetime(date);
-    // record.setShowtype(attr[0]);
-    // HttpSession session = req.getSession();
-    // String ids = (String) session.getAttribute("No1");
-    // Integer cid = Integer.parseInt(ids);
-    // record.setCid(cid);
-    // ts.insert(record);
-    //
-    // Map<String, String> maps = new HashMap<String, String>();
-    // maps.put("flag", "1");
-    // return maps;
-    // }
-
-    // @RequestMapping("/admin_selects")
-    // public String selects(Model model) {
-    // List<Companyinfo> lists = companyinfo.selectAllCompanies();
-    // System.out.println(lists);
-    // model.addAttribute("menus", "4");
-    // model.addAttribute("lists", lists);
-    // // 转发
-    // return "admin_userMan.page";
-    // }
-
-    /**
-     * 公告详情
-     * 
-     * @param req
-     * @return
-     */
-    // @RequestMapping("/admin_gongGao")
-    // public String gongGao1(Integer id, Model model) {
-    // Info infos = is.selectByPrimaryKey(id);
-    // model.addAttribute("ggg", infos);
-    // return "admin_gongGao.page";
-    // }
-
-    // @RequestMapping("/insert_guanlian")
-    // public String insertGL(Datarelation record, HttpServletRequest req) {
-    // String id = req.getParameter("id");
-    // int flag = dataService.insert(record);
-    // if (flag >= 1) {
-    // return "redirect:/admin_shuju1.shtml?id=1";
-    // }
-    //
-    // return "admin_shuju1.page";
-    // }
-
-    // @RequestMapping("/admin_adds")
-    // public String adds(Model model) {
-    //
-    // List<Companyinfo> lists = companyinfo.selectAllCompanies();
-    // System.out.println(lists);
-    // model.addAttribute("menus", "4");
-    // model.addAttribute("lists", lists);
-    //
-    // // 转发
-    // return null;
-    // }
-
-    // @RequestMapping("/admin_shujus")
     public String shuju3(Model model, HttpServletRequest req) {
         model.addAttribute("menus", "3");
         String names = req.getParameter("id");
@@ -475,4 +276,34 @@ public class AdminTilesController {
         model.addAttribute("checks", "geren2");
         return "admin_pass.page";
     }
+
+    /**
+     * 
+     * Description: <br/>
+     * 跳转到后台用户管理的jsp页面
+     * 
+     * @author rongLei
+     * @param model
+     * @return
+     */
+
+    @RequestMapping("/houtaiyonghu")
+    public String houtaiyonghu(Model model) {
+        model.addAttribute("checks", "geren2");
+        List<Companyinfo> lists = companyinfo.selectAllCompanies();
+        for (Companyinfo companyinfo : lists) {
+            System.out.println(companyinfo);
+        }
+        model.addAttribute("lists", lists);
+        model.addAttribute("menus", "6");
+        return "admin_shuju4.page";// 跳转到后台用户管理模块
+    }
+
+    /*
+     * @RequestMapping("/admin_userDsh") // 点击待审核用户,查询返回数据 public String
+     * dshCompanyinfo(Model model) { List<Companyinfo> lists =
+     * companyinfo.selectAllCompanies(); model.addAttribute("lists", lists);
+     * model.addAttribute("menus", "5"); return "admin_userDsh.page"; }
+     */
+
 }

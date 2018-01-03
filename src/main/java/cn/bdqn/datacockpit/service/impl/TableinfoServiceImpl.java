@@ -74,7 +74,6 @@ public class TableinfoServiceImpl implements TableinfoService {
             }
         }
         /*------------------以上将前台要创建的表的信息转为了map集合-----------------*/
-        // JdbcUtil creats = new JdbcUtil();
         ApplicationContext context = JdbcUtil.getContext();// 创建数据库连接
         context = new ClassPathXmlApplicationContext("spring-common.xml");// 读取spring框架的配置文件
         JdbcTemplate jt = (JdbcTemplate) context.getBean("jdbcTemplate");// 使用spring框架里面的一个类,获取数据库连接信息(driver,url,username,passwrod)
