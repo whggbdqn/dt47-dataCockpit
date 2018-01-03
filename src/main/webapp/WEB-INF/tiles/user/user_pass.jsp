@@ -20,6 +20,7 @@
 
         <sapn style="display: block;margin-bottom: -30px">原密码： </sapn>
               <input type="text" class="form-control" style="width: 270px;margin-left: 85px"   name="oldPassword">
+              <span id="title"  style="color: red;"></span>
       </div>
       <div class="form-group has-feedback" style="margin-top: 30px">
 
@@ -30,15 +31,17 @@
       <div class="form-group has-feedback" style="margin-top: 30px">
 
         <sapn style="display: block;margin-bottom: -30px">确认密码： </sapn>
-            <input type="password" class="form-control" style="width: 270px;margin-left: 85px"  name="password1" pattern="[0-9a-zA-Z]{8,16}" required="required">
+            <input  type="password" class="form-control" style="width: 270px;margin-left: 85px"  name="password1" pattern="[0-9a-zA-Z]{8,16}" required="required">
       </div>
 
       <div class="row" style="margin-top: 20px">
         
         <!-- /.col -->
+        
         <div class="col-xs-4" style="margin-top: 10px;width: 380px">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">确认保存</button>
+          <button  id="submit"   type="submit" class="btn btn-primary btn-block btn-flat">确认保存</button>
         </div>
+        
         <!-- /.col -->
       </div>
     </form>

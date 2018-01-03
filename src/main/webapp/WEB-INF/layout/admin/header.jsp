@@ -66,6 +66,7 @@
         <c:hasRole name="supereme"> <li class="zhanghao" ><a href="./admin_shuju4.shtml"><i class="fa fa-link"></i> <span>后台账号管理</span></a></li></c:hasRole>
         <!-- <li class="zhanghao" ><a href="./admin_shuju4.shtml"><i class="fa fa-link"></i> <span>后台账号管理</span></a></li> -->
         <li class="yonghu" ><a href="./admin_userMan.shtml"><i class="fa fa-link"></i> <span>用户管理</span></a></li>
+        <li class="houtaiyonghu" ><a href="./houtaiyonghu.shtml"><i class="fa fa-link"></i> <span>后台用户管理</span></a></li>
         <li class="qiye treeview1">
           <a href="./admin_cominfo.shtml"><i class="fa fa-link"></i> <span>企业数据管理</span>
             <span class="pull-right-container">

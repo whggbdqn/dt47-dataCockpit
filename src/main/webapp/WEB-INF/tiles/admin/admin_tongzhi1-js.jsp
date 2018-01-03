@@ -19,14 +19,7 @@
               })
             </script>
             
-           <!-- <script type="text/javascript">
-          		function pop1(data, type, row){
-          			console.log(row);
-          			var title=$("title").val();
-          			var a =$("publisher").val();
-          			window.location.href="./admin_tongzhi3.shtml?title="+title+"&publisher="+publisher;
-          		}
-           </script> -->
+       
            
 <script type="text/javascript">
    

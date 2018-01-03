@@ -1,6 +1,8 @@
 package cn.bdqn.datacockpit.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -114,5 +116,28 @@ public class CompanyinfoServiceImpl implements CompanyinfoService {
 
         return companyinfo.selectPhoneNum(phone);
     }
+    
+    /**
+     * 
+     * Description: <br/>
+     *ajax验证论文名字是否存在
+     * @author rongLei
+     * @param title
+     * @return
+     */
+    @Override
+    public  boolean  selectpassword(String  password){
+        boolean  flag=false;
+        Map<String,Object>  map=new   HashMap<String, Object>();
+        map.put("password", password);
+        int i=companyinfo.selectpassword(map);
+        System.out.println("i="+i);
+        if(i>0) {//密码正确，定义标记位为true
+            flag=true;
+        }
+        System.out.println(flag);
+        return flag;
+    }; 
+    
 
 }

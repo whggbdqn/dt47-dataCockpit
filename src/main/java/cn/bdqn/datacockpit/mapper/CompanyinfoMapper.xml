@@ -23,6 +23,15 @@
     from companyinfo 
   </select>
   
+   <!-- 验证密码是否正确 -->
+   <select id="selectpassword" resultType="Integer"  parameterType="Map" >
+    select   count(*)  from  companyinfo
+    where password=#{password}     
+   </select>
+  
+  
+  
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
