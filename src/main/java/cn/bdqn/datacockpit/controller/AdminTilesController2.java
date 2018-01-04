@@ -53,7 +53,7 @@ public class AdminTilesController2 {
     private CompanyinfoService companyinfo;
 
     @Autowired
-    private DatarelationService dataService;// 关联关系表业务
+    private DatarelationService dataService;// 关联关系业务
 
     @Autowired
     private RelevanceTableService releTable;
@@ -65,7 +65,7 @@ public class AdminTilesController2 {
 
     /**
      * 
-     * Description: 管理员通知页面<br/>
+     * Description: 显示所有通知<br/>
      *
      * @author dengJ
      * @param model
@@ -79,7 +79,7 @@ public class AdminTilesController2 {
 
     /**
      * 
-     * Description: 添加通知页面<br/>
+     * Description: 主页点击添加通知跳转添加页面<br/>
      *
      * @author dengJ
      * @param model
@@ -96,6 +96,14 @@ public class AdminTilesController2 {
         return "admin_tongzhi3.page";
     }
 
+    /**
+     * 
+     * Description: 修改后点击保存通知<br/>
+     *
+     * @author Fujiadong
+     * @param info
+     * @return
+     */
     // @RequestMapping("/tongzhi_update")
     public String tongzhi_update(Info info) {
         // 获取实体类信息

@@ -84,8 +84,6 @@ public class AdminTilesController {
         return "admin_tongzhi2.page";
     }
 
-  
-
     @RequestMapping("/tongzhi_update")
     public String tongzhi_update(Info info) {
         // 获取实体类信息
@@ -165,8 +163,6 @@ public class AdminTilesController {
         return "admin_userDsh.page";
     }
 
- 
-
     /***
      * 
      * @param req:通过id更新state状态:1
@@ -187,7 +183,7 @@ public class AdminTilesController {
      * @param req:通过id更新state状态:0
      * @return
      */
-   // @RequestMapping("/aduser_update0")
+    // @RequestMapping("/aduser_update0")
     public String aduser_update0(HttpServletRequest req) {
         // 获取实体类信息
         Integer id = Integer.parseInt(req.getParameter("id"));
@@ -280,17 +276,17 @@ public class AdminTilesController {
         model.addAttribute("checks", "geren2");
         return "admin_pass.page";
     }
-    
-    
+
     /**
      * 
      * Description: <br/>
-     *跳转到后台用户管理的jsp页面
+     * 跳转到后台用户管理的jsp页面
+     * 
      * @author rongLei
      * @param model
      * @return
      */
-    
+
     @RequestMapping("/houtaiyonghu")
     public String houtaiyonghu(Model model) {
         model.addAttribute("checks", "geren2");
@@ -300,17 +296,14 @@ public class AdminTilesController {
         }
         model.addAttribute("lists", lists);
         model.addAttribute("menus", "6");
-        return "admin_shuju4.page";//跳转到后台用户管理模块
+        return "admin_shuju4.page";// 跳转到后台用户管理模块
     }
-    
-   /* @RequestMapping("/admin_userDsh") // 点击待审核用户,查询返回数据
-    public String dshCompanyinfo(Model model) {
-        List<Companyinfo> lists = companyinfo.selectAllCompanies();
-        model.addAttribute("lists", lists);
-        model.addAttribute("menus", "5");
-        return "admin_userDsh.page";
-    }*/
-    
-    
-    
+
+    /*
+     * @RequestMapping("/admin_userDsh") // 点击待审核用户,查询返回数据 public String
+     * dshCompanyinfo(Model model) { List<Companyinfo> lists =
+     * companyinfo.selectAllCompanies(); model.addAttribute("lists", lists);
+     * model.addAttribute("menus", "5"); return "admin_userDsh.page"; }
+     */
+
 }
