@@ -44,7 +44,7 @@ public class AdminTilesController2 {
     private TableinfoService ts;// 表信息业务
 
     @Autowired
-    private UserinfoService us;
+    private UserinfoService us;// 企业用户信息
 
     @Autowired
     private InfoService is;// 通知信息业务
@@ -312,8 +312,6 @@ public class AdminTilesController2 {
         return ts.insert(id, session);// -----------创建了一个map集合给json进行响应
     }
 
-   
-
     @RequestMapping("/admin_gongGao") // 公告详情
     public String gongGao1(Integer id, Model model) {
         is.selectByPrimaryKey(id, model);// 查询点击的公告标题，显示公告信息
@@ -324,8 +322,6 @@ public class AdminTilesController2 {
     public String insertGL(Datarelation record) {
         return dataService.insert(record) ? "redirect:/admin_shuju1.shtml?id=1" : "admin_shuju1.page";// 添加成功或添加失败到：企业数据管理页面
     }
-
-    
 
     @SuppressWarnings("resource")
     @RequestMapping("/admin_shujus") // 后台用户点击查看数据,查看企业指定表数据
@@ -400,8 +396,8 @@ public class AdminTilesController2 {
     }
 
     // @RequestMapping("/admin_uppassword")
-    /*public String admin_uppassword(Model model) {
-        model.addAttribute("checks", "geren2");
-        return "admin_pass.page";
-    }*/
+    /*
+     * public String admin_uppassword(Model model) {
+     * model.addAttribute("checks", "geren2"); return "admin_pass.page"; }
+     */
 }
