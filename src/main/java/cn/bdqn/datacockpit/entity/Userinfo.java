@@ -8,6 +8,7 @@
 
 package cn.bdqn.datacockpit.entity;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -20,7 +21,7 @@ import java.util.Set;
  * @see
  */
 
-public class Userinfo {
+public class Userinfo implements Serializable{
 
     private Integer id;
 
