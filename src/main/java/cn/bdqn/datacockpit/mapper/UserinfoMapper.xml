@@ -14,7 +14,7 @@
   
     <!-- shiro专用方法 -->
     <select id="getByPhone" parameterType="String" resultMap="BaseResultMap">
-		SELECT * FROM companyinfo WHERE  phone=#{phone}
+		SELECT * FROM userinfo WHERE  phone=#{phone}
 	</select>
 	
 	
