@@ -1,6 +1,8 @@
 package cn.bdqn.datacockpit.entity;
 
-public class Companyinfo {
+import java.io.Serializable;
+
+public class Companyinfo implements Serializable{
 
     private Integer id;
 

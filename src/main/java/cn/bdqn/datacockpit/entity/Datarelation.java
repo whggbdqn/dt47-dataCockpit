@@ -1,6 +1,8 @@
 package cn.bdqn.datacockpit.entity;
 
-public class Datarelation {
+import java.io.Serializable;
+
+public class Datarelation implements Serializable {
     private Integer id;
 
     private String name;

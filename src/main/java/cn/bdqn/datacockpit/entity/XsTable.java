@@ -1,8 +1,9 @@
 package cn.bdqn.datacockpit.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class XsTable {
+public class XsTable implements Serializable{
     private Long id;
 
     private String name;
