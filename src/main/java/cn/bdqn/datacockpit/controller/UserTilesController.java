@@ -42,7 +42,7 @@ public class UserTilesController {
 
     @Autowired
     private InfoService infoService;
-    
+
     @Autowired
     private CompanyinfoService companyinfoService;
 
@@ -50,6 +50,7 @@ public class UserTilesController {
      * 
      * Description: <br/>
      * 转发跳转到修改密码模块
+     * 
      * @author rongLei
      * @param model
      * @return
@@ -60,10 +61,8 @@ public class UserTilesController {
         return "user_pass.pages";
     }
 
-    
     /**
-     * 验证之前密码是否正确
-     * Description: <br/>
+     * 验证之前密码是否正确 Description: <br/>
      *
      * @author rongLei
      * @param model
@@ -71,17 +70,14 @@ public class UserTilesController {
      */
     @ResponseBody
     @RequestMapping("/password")
-    public boolean password(String password,HttpSession  session) {
-      String  phone =(String) session.getAttribute("phone");//获取电话号码
-      System.out.println(phone);
-      boolean  flag=companyinfoService.selectpassword(password,phone);
-      System.out.println(flag);
-      return flag;
+    public boolean password(String password, HttpSession session) {
+        String phone = (String) session.getAttribute("phone");
+        System.out.println(phone);
+        boolean flag = companyinfoService.selectpassword(password);
+        System.out.println(flag);
+        return flag;
     }
-    
-    
-    
-    
+
     @RequestMapping("/user_update")
     public String update(Model model) {
         model.addAttribute("checks", "geren1");
