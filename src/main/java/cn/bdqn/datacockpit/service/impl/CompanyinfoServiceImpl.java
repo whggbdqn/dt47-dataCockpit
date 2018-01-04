@@ -126,10 +126,11 @@ public class CompanyinfoServiceImpl implements CompanyinfoService {
      * @return
      */
     @Override
-    public  boolean  selectpassword(String  password){
+    public  boolean  selectpassword(String  password,String  phone){
         boolean  flag=false;
         Map<String,Object>  map=new   HashMap<String, Object>();
         map.put("password", password);
+        map.put("phone", phone);
         int i=companyinfo.selectpassword(map);
         System.out.println("i="+i);
         if(i>0) {//密码正确，定义标记位为true

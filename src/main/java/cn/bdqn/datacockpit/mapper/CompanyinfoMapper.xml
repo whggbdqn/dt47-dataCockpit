@@ -26,7 +26,7 @@
    <!-- 验证密码是否正确 -->
    <select id="selectpassword" resultType="Integer"  parameterType="Map" >
     select   count(*)  from  companyinfo
-    where password=#{password}     
+    where password=#{password}   and    phone=#{phone}  
    </select>
   
   

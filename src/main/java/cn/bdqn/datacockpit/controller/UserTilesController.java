@@ -72,9 +72,9 @@ public class UserTilesController {
     @ResponseBody
     @RequestMapping("/password")
     public boolean password(String password,HttpSession  session) {
-      String  phone =(String) session.getAttribute("phone");
+      String  phone =(String) session.getAttribute("phone");//获取电话号码
       System.out.println(phone);
-      boolean  flag=companyinfoService.selectpassword(password);
+      boolean  flag=companyinfoService.selectpassword(password,phone);
       System.out.println(flag);
       return flag;
     }
