@@ -73,6 +73,7 @@ public class UserTilesController {
     public boolean password(String password, HttpSession session) {
         String phone = (String) session.getAttribute("phone");
         System.out.println(phone);
+
         boolean flag = companyinfoService.selectpassword(password,phone);
         System.out.println(flag);
         return flag;
