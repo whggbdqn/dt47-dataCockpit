@@ -26,23 +26,17 @@ import cn.bdqn.datacockpit.service.TableinfoService;
 import cn.bdqn.datacockpit.service.XsTableService;
 import cn.bdqn.datacockpit.utils.JdbcUtil;
 
-/**
- * Project Name:DataCockpit
- * File Name:Json2Controller.java
- * Package Name:
- * Date:2017年8月26日下午6:18:40
- * Copyright (c) 2017, bluemobi All Rights Reserved.
- *
- */
 
 /**
- * Description: <br/>
- * Date: 2017年8月26日 下午6:18:40 <br/>
  * 
- * @author yuanX
+ * Description: <br/>
+ * date: 2018年1月5日 下午12:17:47 <br/>
+ *
+ * @author rongLei
  * @version
- * @see
  */
+
+
 @Controller
 public class Json2Controller {
     @Autowired
@@ -73,7 +67,6 @@ public class Json2Controller {
         HttpSession session = req.getSession();
         Companyinfo cy = (Companyinfo) session.getAttribute("infos");
         Integer id = cy.getId();
-
         List<Tableinfo> lists = ts.selectAll(id);
         list.setData(lists);
         return list;
@@ -86,7 +79,6 @@ public class Json2Controller {
         HttpSession session = req.getSession();
         HttpSession session1 = req.getSession();
         String ids = (String) session1.getAttribute("No1");
-
         Integer id = Integer.parseInt(ids);
         List<Tableinfo> lists = ts.selectAll(id);
         System.out.println(lists);
@@ -94,6 +86,7 @@ public class Json2Controller {
         return list;
     }
 
+    
     @ResponseBody
     @RequestMapping(value = "shuju_3")
     public DatatableResult<Map<String, Object>> datatable3(@IsSearchCondition SearchCondition searchCondition,

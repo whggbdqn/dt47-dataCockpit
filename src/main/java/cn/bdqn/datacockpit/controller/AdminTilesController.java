@@ -67,7 +67,7 @@ public class AdminTilesController {
      */
     @RequestMapping("/admin_tongzhi1")
     public String tongzhi1(Model model) {
-        model.addAttribute("menus", "1");
+        model.addAttribute("menus", "2");
         return "admin_tongzhi1.page";
     }
 
