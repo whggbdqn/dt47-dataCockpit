@@ -9,6 +9,8 @@
 
 package cn.bdqn.datacockpit.entity;
 
+import java.io.Serializable;
+
 /**
  * Description: <br/>
  * Date: 2017年8月30日 上午1:47:25 <br/>
@@ -17,7 +19,7 @@ package cn.bdqn.datacockpit.entity;
  * @version
  * @see
  */
-public class ExcelBins {
+public class ExcelBins implements Serializable{
     private String binsId;
 
     private String ording;

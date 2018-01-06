@@ -1,8 +1,9 @@
 package cn.bdqn.datacockpit.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Analysistasks {
+public class Analysistasks implements Serializable {
     private Integer id;
 
     private Date starttime;

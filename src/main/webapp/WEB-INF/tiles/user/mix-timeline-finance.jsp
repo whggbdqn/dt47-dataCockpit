@@ -1,170 +1,15 @@
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
-<%@ taglib uri="http://shiro.apache.org/tags" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="cc" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!-- Content Header (Page header) -->
-<section class="content-header">
-	<h1 style="font-weight: bolder;">快捷菜单</h1>
-</section>
-
-<!-- Main content -->
-<section class="content">
-	<!-- Small boxes (Stat box) -->
-	<div class="row">
-		<div class="col-lg-3 col-xs-6">
-			<!-- small box -->
-			<div class="small-box bg-red">
-				<div class="inner">
-					<h3>上传数据</h3>
-
-					<h5>New Users</h5>
-				</div>
-				<div class="icon">
-					<img src="resource/images/1.png" />
-				</div>
-				<a href="./user_shuju2.shtml" class="small-box-footer">More info <i
-					class="fa fa-arrow-circle-right"></i></a>
-			</div>
-		</div>
-		<!-- ./col -->
-		<div class="col-lg-3 col-xs-6">
-			<!-- small box -->
-			<div class="small-box bg-green">
-				<div class="inner">
-					<h3>启动新任务</h3>
-
-					<h5>New Account</h5>
-				</div>
-				<div class="icon">
-					<img src="resource/images/2.png" />
-				</div>
-				<a href="./user_shuju1.shtml" class="small-box-footer">More info <i
-					class="fa fa-arrow-circle-right"></i></a>
-			</div>
-		</div>
-		<!-- ./col -->
-
-		<div class="col-lg-3 col-xs-6">
-			<!-- small box -->
-			<div class="small-box bg-yellow">
-				<div class="inner">
-					<h3>数据关联关系</h3>
-
-					<h5>New Notification</h5>
-				</div>
-				<div class="icon">
-					<img src="resource/images/3.png" />
-				</div>
-				<a href="./user_guanxitu.shtml" class="small-box-footer">More info <i
-					class="fa fa-arrow-circle-right"></i></a>
-			</div>
-		</div>
-		<!-- ./col -->
-		<div class="col-lg-3 col-xs-6">
-			<!-- small box -->
-			<div class="small-box bg-aqua">
-				<div class="inner">
-					<H3>任务状态</H3>
-
-					<h5>New Data-table</h5>
-				</div>
-				<div class="icon">
-					<img src="resource/images/33.png" />
-				</div>
-				<a href="./user_shuju1.shtml" class="small-box-footer">More info <i
-					class="fa fa-arrow-circle-right"></i></a>
-			</div>
-		</div>
-		<!-- ./col -->
-	</div>
-	<!-- 快捷菜单以上 -->
-
-	<!-- 通知信息以下 -->
-
-	<!-- TABLE: LATEST ORDERS -->
-	<div class="box box-info" style="width: 49%; float: left;">
-		<div class="box-header with-border">
-			<h3 class="box-title" style="font-weight: bolder;">通知信息</h3>
-
-			<div class="box-tools pull-right">
-				<button type="button" class="btn btn-box-tool"
-					data-widget="collapse">
-					<i class="fa fa-minus"></i>
-				</button>
-				<!-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
-			</div>
-		</div>
-		<!--   /.box-header -->
-		<div class="box-body">
-			<div class="table-responsive">
-				<div id=tz>
-					<ul>
-						<cc:forEach items="${flag }" var="map" begin="0" end="4">
-					
-						<li class=tz1><a href="./gongGao.shtml?id=${map.info.id }">${map.info.title }【<fmt:formatDate value="${map.info.publishDate }" pattern="yyyy-MM-dd"/>】</a>
-						<cc:if test="${map.date==1 }">
-						<img src="resource/images/6.png" />
-						</cc:if>
-						</li>
-						</cc:forEach>
-
-					</ul>
-				</div>
-			</div>
-			<!-- /.table-responsive -->
-		</div>
-		<!-- /.box-body -->
-		<div class="box-footer clearfix">
-			<a href="javascript:void(0)"
-				class="btn btn-sm btn-default btn-flat pull-right">more >></a>
-		</div>
-		<!-- /.box-footer -->
-	</div>
-	<!-- /.box -->
-	<!-- 通知信息以上 -->
-
-	<!-- 系统消息以下 -->
-	<div class="box box-default"
-		style="width: 49%; float: right; border-top-color: #F39C12">
-		<div class="box-header with-border">
-			<h3 class="box-title" style="font-weight: bolder;">系统消息</h3>
-
-			<div class="box-tools pull-right">
-				<button type="button" class="btn btn-box-tool"
-					data-widget="collapse">
-					<i class="fa fa-minus"></i>
-				</button>
-			</div>
-		</div>
-		<!-- /.box-header -->
-		<div class="box-body">
-			<div id=xt>
-				<ul>
-					<li class=tz><a href="#">销售到访关联任务完成【2017-08-18】</a><img
-						src="resource/images/6.png" /></li>
-					<li class=tz><a href="#">到访与媒体渠道关联任务失败【2017-08-18】</a><img
-						src="resource/images/6.png" /></li>
-					<li class=tz><a href="#">到访认筹关联任务完成【2017-08-18】</a><img
-						src="resource/images/6.png" /></li>
-					<li class=tz><a href="#">到访与媒体渠道关联任务完成【2017-08-17】</a></li>
-					 <li class=tz><a href="#">到访认筹关联任务失败【2017-08-17】</a><img
-						src="resource/images/6.png" /></li> 
-
-				</ul>
-			</div>
-		</div>
-		<!-- <div class="box-footer clearfix">
-			<a href="javascript:void(0)"
-				class="btn btn-sm btn-default btn-flat pull-right">more >></a>
-		</div> -->
-	</div>
-	<!-- 系统消息以上 -->
-
-	<!-- 数据展示以下  -->
-	
-	<div class="row">
-	 <div id="container" style="height: 400px; margin: 0"></div></div>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+<%
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort() +request.getContextPath()+"/";
+%>
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="<%=basePath %>">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
@@ -556,10 +401,5 @@ if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
        </script>
-
-
-	
-	<!-- 数据展示以上  -->
-
-</section>
-<!-- /.content -->
+   </body>
+</html>

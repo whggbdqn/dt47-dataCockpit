@@ -1,6 +1,8 @@
 package cn.bdqn.datacockpit.entity;
 
-public class Tablecolumninfo {
+import java.io.Serializable;
+
+public class Tablecolumninfo implements Serializable{
     private Integer id;
 
     private Integer tid;
