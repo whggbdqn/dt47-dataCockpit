@@ -185,34 +185,42 @@ public class LoginController {
         return "front/error.jsp";
     }
 
+    
+    
     /**
-     * 修改资料，先获取存在session里面的实体类
      * 
+     * Description:修改资料，先获取要修改的信息存在session里面的实体类 <br/>
+     *
+     * @author rongLei
      * @param req
      * @return
      */
     @RequestMapping("/updateInfo")
     public String updateInfo(HttpServletRequest req) {
         HttpSession session = req.getSession();
-        Companyinfo compi = (Companyinfo) session.getAttribute("infos");
+        Companyinfo compi = (Companyinfo) session.getAttribute("infos");//获取之前信息
+        System.out.println(compi);
         session.setAttribute("comp", compi);
-
         return "redirect:/user_update.shtml";
     }
 
+    
+    
     /**
-     * 动态修改资料，修改密码不在此页面
      * 
+     * Description:修改用户信息提交的方法 <br/>
+     *
+     * @author rongLei
      * @param company
      * @param req
      * @return
      */
     @RequestMapping("/updateInfo1")
     public String updateInfo1(Companyinfo company, HttpServletRequest req) {
-        // System.out.println(company);
         HttpSession session = req.getSession();
         int flag = companyinfo.updateByPrimaryKeySelective(company);
         if (flag >= 1) {
+            session.setAttribute("infos", company);//修改成功后重新刷新session域中的值
             return "redirect:/user_index.shtml";
         }
         session.setAttribute("message", "*修改失败！");
