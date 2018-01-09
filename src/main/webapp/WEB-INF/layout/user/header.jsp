@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" import="cn.bdqn.datacockpit.entity.Companyinfo"
+<%@ page language="java" contentType="text/html; charset=utf-8" 
     pageEncoding="utf-8" isELIgnored="false"%>
   <!-- Main Header -->
   <header class="main-header">
@@ -39,8 +39,7 @@
           <img src="dist/img/yonghu.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>${infos.name }&emsp;${infos.job }</p>
-          <p>${infos.corpname }</p>
+          <p>${infos.realname }&emsp;${infos.job }</p>
           <!-- Status -->
           <!-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> -->
         </div>
@@ -72,7 +71,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="geren1"><a href="./updateInfo.shtml?phone=${infos.phone }">&emsp;<i class="fa fa-genderless"></i>资料修改</a></li>
+            <li class="geren1"><a href="./updateInfo.shtml?phone=${infos.username }">&emsp;<i class="fa fa-genderless"></i>资料修改</a></li>
             <li class="geren2"><a href="./updatePassword.shtml">&emsp;<i class="fa fa-genderless"></i>修改密码</a></li>
           </ul>
         </li>

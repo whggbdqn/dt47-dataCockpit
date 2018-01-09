@@ -39,7 +39,7 @@
           <img src="dist/img/manager.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>${infos.name }&emsp;${infos.job }</p>
+          <p>${infos.realname }&emsp;${infos.job }</p>
           <a><i class="fa fa-circle text-success"></i> 在线</a>
       
         </div>

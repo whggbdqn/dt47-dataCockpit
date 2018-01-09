@@ -23,16 +23,19 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.bdqn.datacockpit.entity.Companyinfo;
 import cn.bdqn.datacockpit.entity.Info;
-import cn.bdqn.datacockpit.entity.Userinfo;
+import cn.bdqn.datacockpit.entity.Userinfo1;
 import cn.bdqn.datacockpit.service.CompanyinfoService;
 import cn.bdqn.datacockpit.service.InfoService;
 import cn.bdqn.datacockpit.service.UserinfoService;
@@ -72,9 +75,10 @@ public class LoginController {
 
             // 生成随机字串
             String verifyCode = VerifyCodeUtils.generateVerifyCode(4);
+            System.out.println(verifyCode);
             // 存入会话session
             HttpSession session = request.getSession(true);
-            session.setAttribute("code", verifyCode.toLowerCase());
+            session.setAttribute("code", verifyCode);
             // 生成图片
             int w = 146, h = 33;
             VerifyCodeUtils.outputImage(w, h, response.getOutputStream(), verifyCode);
@@ -89,7 +93,7 @@ public class LoginController {
 
     /**
      * 登录
-     * 
+     * 此方法已经过时
      * @param phone
      * @param password
      * @param onLine
@@ -97,7 +101,8 @@ public class LoginController {
      * @param req
      * @return
      */
-    @RequestMapping("/login2")
+   @SuppressWarnings("finally")
+	/* @RequestMapping("/login2")
     public String login(HttpSession session, HttpServletResponse res, HttpServletRequest req) {
         session = req.getSession();
         String phone = (String) session.getAttribute("phone");
@@ -108,10 +113,10 @@ public class LoginController {
         @SuppressWarnings("unused")
         String trueCode = (String) session.getAttribute("code");
         // 对比验证码
-        /*
+        
          * if(!trueCode.equals(code2)){ //验证码不正确则返回不正确
          * req.setAttribute("erroMessage", "*验证码不正确"); }
-         */
+         
         // 根据账号判断该用户属于公司还是管理员
         List<Info> infoList = infoService.selectAllInfo();
         Date time = new Date();
@@ -143,11 +148,11 @@ public class LoginController {
         session.setAttribute("erroMessage", "*账号或者密码输入有误！");
         return "redirect:/login.jsp";
     }
-
+*/
     /*
      * shiro方法登录
      */
-    @RequestMapping("/login")
+   /* @RequestMapping("/login")
     public String login(Userinfo user, String code2, HttpSession session, HttpServletRequest request) {
         // 首先判断验证码是否正确
         String trueCode = (String) session.getAttribute("code");
@@ -167,7 +172,51 @@ public class LoginController {
             session.setAttribute("erroMessage", "*用户名或密码错误！");
             return "redirect:/login.jsp";
         }
+    }*/
+    @RequestMapping("/login")
+    public String login(@RequestParam("phone")String phone,@RequestParam("password")String password,@RequestParam("code2")String ValidateCode,HttpSession session) {
+        // 1.首先判断验证码是否正确
+        String trueCode = (String) session.getAttribute("code");  //生成的二维码编号
+        System.out.println(ValidateCode);
+        if (!trueCode.equals(ValidateCode)) {		//验证验证码，错误将信息保存到session中，并重定向到页面
+        	session.setAttribute("erroMessage", "*验证码错误！");
+        	return "redirect:/login.jsp";
+        }
+        System.out.println("开始校验！！！");
+        //2.0shiro开始校验账户密码
+        Subject subject = SecurityUtils.getSubject();// 得到账号密码封装起来的用户，并未进行登录成功的操作
+        //2.1在校验账号密码之前，判断该用户是否已经登录过了，如果登录过了直接重定向到主页面，否则进行shiro的登录校验
+        if(!subject.isAuthenticated()) {
+        	//进行shiro的登录校验
+        	UsernamePasswordToken currentToken = new UsernamePasswordToken(phone, password);//将账号密码封装成UsernamePasswordToken口令对象
+        	currentToken.setRememberMe(true);//记住当前用户，在浏览器关闭后再次打开的情况下可以不用登录
+        	try {
+                subject.login(currentToken); //将当前为成功登录的信息交给shiro底层为用户校验，成功在realm中进行重定向到角色对应的主页，否则抛出异常并将错误信息返回到登录页面
+               System.out.println("shiro校验成功！！！");
+                if(subject.hasRole("company_user")) {
+                	return "redirect:user_index.shtml";
+                }
+                return "redirect:admin_index.shtml";
+            } catch (Exception e) {
+            	session.setAttribute("erroMessage", "*用户名或密码错误！");
+            	e.printStackTrace();
+            	return "redirect:/login.jsp";
+            }
+        }else {
+        	//已经登录过了的用户，通过判断其角色，进行分发到不同的主页面
+        	if(subject.hasRole("company_user")) {
+        		 return "redirect:user_index.shtml";
+            }
+        	return "redirect:admin_index.shtml";
+        }
     }
+  /**
+   * 访问其他页面
+   * */
+   @RequestMapping("/{page}")
+	public String showpage(@PathVariable String page) {
+		return page;
+	}
 
     /**
      * 注册（申请合作）
@@ -277,8 +326,7 @@ public class LoginController {
      */
     @RequestMapping("/exit")
     public String exit(HttpServletRequest req) {
-        req.getSession().removeAttribute("comp");
-
+    	SecurityUtils.getSubject().getSession().stop();
         return "front/exit.jsp";
     }
 

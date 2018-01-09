@@ -10,20 +10,31 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="INTEGER" />
   </resultMap>
-  
+  <resultMap id="BaseResultMap1" type="cn.bdqn.datacockpit.entity.Userinfo1" >
+    <result column="realName" property="realname" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="job" property="job" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="approval" property="approval" jdbcType="VARCHAR" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="per_name" property="permissionName" jdbcType="VARCHAR" />
+  </resultMap>  
   
     <!-- shiro专用方法 -->
-    <select id="getByPhone" parameterType="String" resultMap="BaseResultMap">
-		SELECT * FROM userinfo WHERE  phone=#{phone}
+    <select id="getByPhone" parameterType="String" resultMap="BaseResultMap1">
+		SELECT * FROM USER WHERE  userName=#{phone}
 	</select>
 	
 	
-	<select id="getRoles" parameterType="String" resultMap="BaseResultMap">
-		SELECT r.role_name FROM userinfo u INNER JOIN user_role ur ON u.id=ur.uid INNER JOIN role r ON ur.rid=r.id WHERE u.phone=#{phone}
+	<select id="getRoles" parameterType="String" resultType="String">
+	     SELECT role_name FROM USER u,role r WHERE u.role_id=r.id AND u.userName=#{phone}
 	</select>
 	
-	<select id="getPermissions" parameterType="String" resultMap="BaseResultMap">
-		SELECT p.per_name FROM userinfo u INNER JOIN user_role ur ON u.id=ur.uid INNER JOIN role r ON ur.rid=r.id INNER JOIN role_permission rp ON rp.rid=r.id INNER JOIN permission p ON p.id=rp.pid WHERE u.phone=#{phone}
+	<select id="getPermissions" parameterType="String" resultType="String">
+	SELECT p.per_name FROM USER u,role r,permission p WHERE u.role_id=r.id AND p.role_id=r.id AND u.userName=#{phone}
 	</select>
 	
   <!-- 正常增删改查 -->
