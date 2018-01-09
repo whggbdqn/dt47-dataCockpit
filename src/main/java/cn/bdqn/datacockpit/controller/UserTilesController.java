@@ -79,6 +79,16 @@ public class UserTilesController {
         return flag;
     }
 
+    
+    
+    /**
+     * 
+     * Description: 跳转到修改页面的方法<br/>
+     *
+     * @author rongLei
+     * @param model
+     * @return
+     */
     @RequestMapping("/user_update")
     public String update(Model model) {
         model.addAttribute("checks", "geren1");
@@ -87,9 +97,9 @@ public class UserTilesController {
 
     /**
      * 
-     * Description: 转发到用户首页<br/>
+     * Description:转发到用户首页 <br/>
      *
-     * @author dengJ
+     * @author rongLei
      * @param model
      * @return
      */

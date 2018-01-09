@@ -35,7 +35,7 @@
       <div class="form-group has-feedback" style="margin-top: 30px">
 
         <sapn style="display: block;margin-bottom: -30px">联系人姓名： </sapn>
-             <input type="text" class="form-control" style="width: 270px;margin-left: 85px"  name="name" value="${comp.name }">
+             <input type="text" class="form-control"  pattern="^[\u4e00-\u9fa5]+$"  required="required" title="请输入正确的姓名"  style="width: 270px;margin-left: 85px"  name="name" value="${comp.name }">
         <span style="display: block;margin-top: -30px;margin-left: 320px">
              <img src="resource/images/ios7-contact-outline.png" style="width: 27px;height: 25px">
         </span>
@@ -44,7 +44,7 @@
       <div class="form-group has-feedback" style="margin-top: 30px">
 
         <sapn style="display: block;margin-bottom: -30px">联系人职务： </sapn>
-            <input type="text" class="form-control" style="width: 270px;margin-left: 85px"  name="job" value="${comp.job }">
+            <input type="text" class="form-control"  pattern="^[\u4e00-\u9fa5]+$"  required="required" title="请输入正确的联系人职务"  style="width: 270px;margin-left: 85px"  name="job" value="${comp.job }">
         <span style="display: block;margin-top: -30px;margin-left: 320px">
             <img src="resource/images/social-wordpress.png" style="width: 27px;height: 25px">
         </span>
@@ -53,27 +53,21 @@
       <div class="form-group has-feedback" style="margin-top: 30px">
 
         <sapn style="display: block;margin-bottom: -30px">手机号码： </sapn>
-            <input type="text" class="form-control" style="width: 270px;margin-left: 85px"  name="phone" value="${comp.phone }">
+            <input type="text" class="form-control"  pattern="1[34578]\d{9}"  required="required" title="请输入正确的手机号码" style="width: 270px;margin-left: 85px"  name="phone" value="${comp.phone }">
         <span style="display: block;margin-top: -30px;margin-left: 320px">
             <img src="resource/images/iphone.png" style="width: 27px;height: 25px">
         </span>
       </div>
       <div class="form-group has-feedback" style="margin-top: 30px">
         <sapn style="display: block;margin-bottom: -30px">邮箱地址： </sapn>
-            <input type="email" class="form-control" style="width: 270px;margin-left: 85px"  name="email" value="${comp.email }">
+            <input type="email" class="form-control"  required="required"  style="width: 270px;margin-left: 85px"  name="email" value="${comp.email }">
         <span style="display: block;margin-top: -30px;margin-left: 320px">
             <img src="resource/images/ios7-email.png" style="width: 27px;height: 25px">
         </span>
       </div>
       
 
-      <div class="form-group has-feedback">
-          <div>
-             <input type="text" class="form-control" id="code_input"  placeholder="请输入验证码" style="width: 140px;float: left">
-          </div>
-          <div id="v_container" style="width: 150px;height: 40px;float: left;margin-left: 60px"><img src="getYzm.shtml"></div>
-        
-      </div>
+   
       <div class="row" style="margin-top: 20px">
         
         <!-- /.col -->
