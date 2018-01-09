@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Set;
 
 import cn.bdqn.datacockpit.entity.Userinfo;
-import cn.bdqn.datacockpit.entity.Userinfo1;
 
 /**
  * Description: <br/>
@@ -29,22 +28,22 @@ public interface UserinfoService {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Userinfo1 record);
+    int insert(Userinfo record);
 
     int insertSelective(Userinfo record);
 
-    Userinfo1 selectByPrimaryKey(Integer id);
+    Userinfo selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Userinfo1 record);
+    int updateByPrimaryKeySelective(Userinfo record);
 
-    int updateByPrimaryKey(Userinfo1 record);
+    int updateByPrimaryKey(Userinfo record);
     
     /**
      * shiro通过电话号查询用户
      * @param userName
      * @return
      */
-    public Userinfo1 getByPhone(String phone);
+    public Userinfo getByPhone(String phone);
     
     /**
      * shiro通过电话号查询角色信息

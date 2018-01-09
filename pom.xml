@@ -2,40 +2,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>maven</groupId>
-	<artifactId>DataCockpit</artifactId>
+	<artifactId>DT36DataCockpit</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>DataCockpit Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<properties> 
+	<properties>
 		<project.build.sourceEncoding>utf8</project.build.sourceEncoding>
 		<maven.compiler.encoding>utf8</maven.compiler.encoding>
-		<shiro.version>1.2.4</shiro.version>
+		<shiro.version>1.2.2</shiro.version>
 		<spring.version>3.2.2.RELEASE</spring.version>
 		<jackson.version>2.1.4</jackson.version>
 	</properties>
 	<dependencies>
-		<dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
-            <version>${shiro.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-web</artifactId>
-            <version>${shiro.version}</version>
-        </dependency>
-        <dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-spring</artifactId>
-			<version>${shiro.version}</version>
-		</dependency>
-		<dependency>  
-            <groupId>org.springframework</groupId>  
-            <artifactId>spring-test</artifactId>  
-            <version> 3.2.4.RELEASE  </version>  
-            <scope>provided</scope>  
-        </dependency> 
+
 
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
@@ -107,7 +87,7 @@
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
-			<version>1.2</version>
+			<version>1.0.4</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>
@@ -254,6 +234,11 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
 		<!-- excel分析 -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -272,7 +257,7 @@
 		</dependency>
 		<!-- 中文变拼音 -->
 		<dependency>
-			<groupId>com.belerweb</groupId> 
+			<groupId>com.belerweb</groupId>
 			<artifactId>pinyin4j</artifactId>
 			<version>2.5.0</version>
 		</dependency>

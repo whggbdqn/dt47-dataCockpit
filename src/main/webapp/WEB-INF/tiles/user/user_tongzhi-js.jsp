@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%-- <script type="text/javascript">
+<script type="text/javascript">
           
               $("#check_1 tr").find("td:eq(0)").css("width","100px")
               $("#check_1 tr").find("td:eq(0)").css("text-align","center")
@@ -43,7 +43,7 @@
 <script>
   $(function () {
 	var t =	$('#example1').DataTable({
-		 "ajax"		: {
+		<%--  "ajax"		: {
 	    	  "url"		: "<%=request.getContextPath()%>/dt_lists3.shtml",
 	    	  "method"	: "POST",
 	    	  "headers" : {"Content-Type": "application/json"},
@@ -57,7 +57,7 @@
 	    	  {"data":"title"},
 	    	  {"data": function(data, type, row) { return '&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button type="button" class="btn btn-primary btn-lg update_btn" data-toggle="modal" data-target="#myModal2" data-whatever="@jason" style="width: 70px;height: 20px;font-size: 10px;line-height: 0px" onclick="pop1()">编辑</button>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button type="button" class="btn btn-primary btn-lg delete_btn" data-toggle="modal" data-target="#myModal2" data-whatever="@jason" style="width: 70px;height: 20px;font-size: 10px;line-height: 0px" onclick="pop2()">删除</button>'; } },
 	      ],
-	      
+	       --%>
 	});
 		t.on('order.dt search.dt',
 		 function() {
@@ -82,4 +82,3 @@
     $('.textarea').wysihtml5()
   })
 </script>
- --%>

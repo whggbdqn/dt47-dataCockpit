@@ -9,7 +9,6 @@
 
 package cn.bdqn.datacockpit.service.impl;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.bdqn.datacockpit.entity.Userinfo;
-import cn.bdqn.datacockpit.entity.Userinfo1;
 import cn.bdqn.datacockpit.mapper.UserinfoMapper;
 import cn.bdqn.datacockpit.service.UserinfoService;
 
@@ -31,10 +29,11 @@ import cn.bdqn.datacockpit.service.UserinfoService;
  */
 @Service
 public class UserinfoServiceImpl implements UserinfoService {
-	@Autowired
+
+    @Autowired
     UserinfoMapper userinfoMapper;
 
-	@Override
+    @Override
     public List<Userinfo> selectAllUserinfo() {
         return userinfoMapper.selectAllUserinfo();
     }
@@ -46,7 +45,7 @@ public class UserinfoServiceImpl implements UserinfoService {
     }
 
     @Override
-    public int insert(Userinfo1 record) {
+    public int insert(Userinfo record) {
         int flag = userinfoMapper.insert(record);
         return flag;
     }
@@ -58,45 +57,35 @@ public class UserinfoServiceImpl implements UserinfoService {
     }
 
     @Override
-    public Userinfo1 selectByPrimaryKey(Integer id) {
+    public Userinfo selectByPrimaryKey(Integer id) {
         return userinfoMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(Userinfo1 record) {
+    public int updateByPrimaryKeySelective(Userinfo record) {
         int flag = userinfoMapper.updateByPrimaryKeySelective(record);
         return flag;
     }
 
     @Override
-    public int updateByPrimaryKey(Userinfo1 record) {
+    public int updateByPrimaryKey(Userinfo record) {
         int flag = userinfoMapper.updateByPrimaryKey(record);
         return flag;
     }
 
     @Override
-    public Userinfo1 getByPhone(String phone) {
-    	Userinfo1 userinfo =userinfoMapper.getByPhone(phone);
-    	System.out.println(userinfo);
-        return userinfo;
+    public Userinfo getByPhone(String phone) {
+        return userinfoMapper.getByPhone(phone);
     }
 
     @Override
     public Set<String> getRoles(String phone) {
-    	String rolesSet=userinfoMapper.getRoles(phone);
-    	Set<String> returnset =new HashSet<String>();
-    	returnset.add(rolesSet);
-    	System.out.println(returnset);
-        return returnset;
+        return userinfoMapper.getRoles(phone);
     }
 
     @Override
     public Set<String> getPermissions(String phone) {
-    	String permissionsSet=userinfoMapper.getPermissions(phone);
-    	Set<String> returnset1 =new HashSet<String>();
-    	returnset1.add(permissionsSet);
-    	System.out.println(returnset1);
-        return returnset1;
+        return userinfoMapper.getPermissions(phone);
     }
 
 }

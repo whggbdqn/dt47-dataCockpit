@@ -17,6 +17,10 @@
     id, corpname, phone, name, job, password, email, state, approval
   </sql>
   
+  <select id="checkPhone" resultType="Integer" >
+    select   count(*)  from  companyinfo
+    where  phone=#{phone}  
+   </select>
    <select id="selectAllCompanies" resultMap="BaseResultMap">
     select 
     id, corpname, phone, name, job, email, state, approval

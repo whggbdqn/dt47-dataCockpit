@@ -17,6 +17,11 @@ public class CompanyinfoServiceImpl implements CompanyinfoService {
     @Autowired
     private CompanyinfoMapper companyinfo;
 
+    @Override
+    public int checkPhone(String phone) {
+        return companyinfo.checkPhone(phone);
+    }
+
     /**
      * 
      * 查询所有公司信息.
@@ -116,29 +121,29 @@ public class CompanyinfoServiceImpl implements CompanyinfoService {
 
         return companyinfo.selectPhoneNum(phone);
     }
-    
+
     /**
      * 
      * Description: <br/>
-     *ajax验证论文名字是否存在
+     * ajax验证论文名字是否存在
+     * 
      * @author rongLei
      * @param title
      * @return
      */
     @Override
-    public  boolean  selectpassword(String  password,String  phone){
-        boolean  flag=false;
-        Map<String,Object>  map=new   HashMap<String, Object>();
+    public boolean selectpassword(String password, String phone) {
+        boolean flag = false;
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("password", password);
         map.put("phone", phone);
-        int i=companyinfo.selectpassword(map);
-        System.out.println("i="+i);
-        if(i>0) {//密码正确，定义标记位为true
-            flag=true;
+        int i = companyinfo.selectpassword(map);
+        System.out.println("i=" + i);
+        if (i > 0) {// 密码正确，定义标记位为true
+            flag = true;
         }
         System.out.println(flag);
         return flag;
-    }; 
-    
+    };
 
 }

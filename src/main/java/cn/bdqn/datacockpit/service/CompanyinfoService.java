@@ -77,6 +77,8 @@ public interface CompanyinfoService {
      */
     int selectPhoneNum(String phone);
 
-    boolean selectpassword(String password,String  phone);
+    boolean selectpassword(String password, String phone);
+
+    int checkPhone(String phone);
 
 }

@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.bdqn.datacockpit.entity.Companyinfo;
 import cn.bdqn.datacockpit.entity.Datarelation;
 import cn.bdqn.datacockpit.entity.Info;
-import cn.bdqn.datacockpit.entity.Userinfo;
 import cn.bdqn.datacockpit.service.CompanyinfoService;
 import cn.bdqn.datacockpit.service.DatarelationService;
 import cn.bdqn.datacockpit.service.InfoService;
@@ -57,6 +56,15 @@ public class AdminTilesController2 {
 
     @Autowired
     private RelevanceTableService releTable;
+
+    // 注册时校验手机号
+    @RequestMapping("checkPhone")
+    @ResponseBody
+    public int checkPhone(String phone) {
+        System.out.println("controller==" + phone);
+        System.out.println("result===============" + companyinfo.checkPhone(phone));
+        return companyinfo.checkPhone(phone);
+    }
 
     // @RequestMapping("/admin_index")
     public String index(Model model) {
@@ -273,11 +281,12 @@ public class AdminTilesController2 {
     }
 
     @RequestMapping("insertAdminReg") // 后台管理员添加用户-----------------------注册用户
-    public String insertAdminReg(Userinfo record) {
+    public String insertAdminReg(Companyinfo record) {
+        System.out.println(record);
         System.out.println("立即注册");
-        int flag = us.insertSelective(record);
+        int flag = companyinfo.insertSelective(record);
         // 转发
-        return "admin_shuju4.page";
+        return "redirect:admin_userMan.shtml";
     }
 
     @RequestMapping("/selectAllCompanyinfo") // 点击数据驾驶舱或者登录成功

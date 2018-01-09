@@ -6,6 +6,7 @@ import java.util.Map;
 import cn.bdqn.datacockpit.entity.Companyinfo;
 
 public interface CompanyinfoMapper {
+    int checkPhone(String phone);
 
     List<Companyinfo> selectAllCompanies();
 
@@ -19,8 +20,8 @@ public interface CompanyinfoMapper {
 
     Companyinfo selectByPhone(String phone);
 
-    int  selectpassword(Map  map);//根据密码是否重复
-    
+    int selectpassword(Map map);// 根据密码是否重复
+
     int updateByPrimaryKeySelective(Companyinfo record);
 
     int updateByPrimaryKey(Companyinfo record);

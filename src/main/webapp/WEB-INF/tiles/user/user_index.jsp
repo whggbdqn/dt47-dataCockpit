@@ -154,17 +154,19 @@
 				</ul>
 			</div>
 		</div>
-		<!-- <div class="box-footer clearfix">
+		<div class="box-footer clearfix">
 			<a href="javascript:void(0)"
 				class="btn btn-sm btn-default btn-flat pull-right">more >></a>
-		</div> -->
+		</div> 
 	</div>
 	<!-- 系统消息以上 -->
 
 	<!-- 数据展示以下  -->
-	
-	<div class="row">
-	 <div id="container" style="height: 400px; margin: 0"></div></div>
+		<div class="row">
+		<div class="col-md-12">
+			<div class="box" style="border-top-color: red">
+			
+	 <div id="container" style="height: 400%; margin: 0px"></div></div></div></div>
        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
